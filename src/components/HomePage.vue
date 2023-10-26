@@ -221,8 +221,8 @@ export default {
         // update polygonPath and polygonOptions
         this.polygonPath = data["points"]
         for (const point of this.polygonPath) {
-          point.lat = parseInt(point.lat);
-          point.lng = parseInt(point.lng);
+          point.lat = parseFloat(point.lat);
+          point.lng = parseFloat(point.lng);
         }
         console.log(this.polygonPath);
          
