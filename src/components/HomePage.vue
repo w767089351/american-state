@@ -192,11 +192,6 @@ export default {
       }
     },
 
-
-    // There are some discrepancies between the coordinates in the data and the coordinates of real state boundaries,
-    // resulting in inaccuracies when displaying them on the map. Here the fetchStateDetails function works well and 
-    // correctly get all coordinates and draw on maps. 
-
     // fetchStateDetails call backend graphQL API to query the detailed information of the specific state
     async fetchStateDetails(name) {
       const query = 
@@ -221,6 +216,9 @@ export default {
         // update polygonPath and polygonOptions
         this.polygonPath = data["points"]
         for (const point of this.polygonPath) {
+
+          // In previous version, I wrongly used parseInt to transfer the point coordinate, which caused 
+          // the discrepancy between the actual state boundary and the data coordinates.
           point.lat = parseFloat(point.lat);
           point.lng = parseFloat(point.lng);
         }
